@@ -1,0 +1,14 @@
+.photo-post {
+  width: 34px; 
+  height: 34px; 
+  border-radius: 50%;
+  margin-top: 5px;
+}
+
+.fix-span-resposta {
+  margin-left: 10px;
+}
+
+.mat-cell:hover {
+  cursor: pointer;
+}

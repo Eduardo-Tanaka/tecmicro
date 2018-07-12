@@ -1,0 +1,97 @@
+<div class="main-content">
+  <div class="row">
+    <div class="col-lg-4 col-sm-12">
+      <app-tecmicro-info></app-tecmicro-info>
+    </div>
+
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header card-header-primary card-header-icon">
+          <div class="card-icon">
+            <i class="material-icons">question_answer</i>
+          </div>
+          <h4 class="card-title">Últimos Posts</h4>
+        </div>
+        <div class="card-body">
+          <div class="material-datatables">
+            <div class="example-header">
+              <div class="row justify-content-between">
+                <mat-form-field class="col-4">
+                  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrar">
+                </mat-form-field>
+                <mat-form-field class="col-4">
+                  <mat-select placeholder="Filtro Tipo" (change)="filtrarTipo($event.value)">
+                    <mat-option value="">
+                      Todos
+                    </mat-option>
+                    <mat-option *ngFor="let filtro of filtroTipos" [value]="filtro">
+                      {{ filtro }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <mat-table [dataSource]="dataSource" matSort>
+              <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="data">
+                <mat-header-cell *matHeaderCellDef mat-sort-header style="flex:1"> Data/Hora </mat-header-cell>
+                <mat-cell *matCellDef="let element" style="flex:1"> {{element.data}} </mat-cell>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="post">
+                <mat-header-cell *matHeaderCellDef mat-sort-header style="flex:1"> Post Nº </mat-header-cell>
+                <mat-cell *matCellDef="let element" style="flex:1"> {{element.post}} </mat-cell>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="autoria">
+                <mat-header-cell *matHeaderCellDef mat-sort-header style="flex:1"> Autoria </mat-header-cell>
+                <mat-cell *matCellDef="let element" style="flex:1"> 
+                  <img src="../assets/img/default-avatar.png" class="photo-post" /> <br/> {{element.autoria}} 
+                </mat-cell>
+              </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="tipo">
+                <mat-header-cell *matHeaderCellDef mat-sort-header style="flex:2"> Tipo </mat-header-cell>
+                <mat-cell *matCellDef="let element" style="flex:2"> {{element.tipo}} </mat-cell>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="assunto">
+                <mat-header-cell *matHeaderCellDef mat-sort-header style="flex:4"> Assunto </mat-header-cell>
+                <mat-cell *matCellDef="let element" style="flex:4"> 
+                  {{element.assunto}} 
+                  <hr style="margin: 0;" />
+                  <small>{{ element.descr | textsize:180 }}</small>
+                </mat-cell>
+              </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="resp">
+                <mat-header-cell *matHeaderCellDef mat-sort-header style="flex:1"> Resp. </mat-header-cell>
+                <mat-cell *matCellDef="let element" style="flex:1">
+                  <span class="fix-span-resposta"> {{element.resp}} </span>
+                </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            
+            <mat-paginator
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 20]"
+              [showFirstLastButtons]="true">
+            </mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
