@@ -51,7 +51,7 @@ import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 
 import { AppRoutes } from './app.routing';
 
-import { getDutchPaginatorIntl } from './MyClassIntl';
+import { getPaginatorIntl } from './MyClassIntl';
 
 // cria um module dos componentes do material design e exporta eles para ser importado pelo AppModule abaixo
 @NgModule({
@@ -111,7 +111,7 @@ export class MaterialModule {}
     AuthLayoutComponent
   ],
   providers: [
-    { provide: MatPaginatorIntl, useValue: getDutchPaginatorIntl() }
+    { provide: MatPaginatorIntl, useValue: getPaginatorIntl() }
   ],
   bootstrap: [ AppComponent ]
 })

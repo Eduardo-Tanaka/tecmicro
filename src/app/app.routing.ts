@@ -16,16 +16,14 @@ export const AppRoutes: Routes = [
       {
         path: '',
         loadChildren: './dashboard/dashboard.module#DashboardModule'
-      }
-    ]
-  }, 
-  {
-    path: '',
-    component: AuthLayoutComponent,
-    children: [
+      },
       {
-        path: 'pages',
-        loadChildren: './pages/pages.module#PagesModule'
+        path: 'post',
+        loadChildren: './post/post.module#PostModule'
+      },
+      {
+        path: 'enquete',
+        loadChildren: './enquete/enquete.module#EnqueteModule'
       }
     ]
   }

@@ -12,3 +12,9 @@
 .mat-cell:hover {
   cursor: pointer;
 }
+
+.dash-info {
+  font-size: 22px;
+  font-weight: 400;
+  padding-top: 10px;
+}

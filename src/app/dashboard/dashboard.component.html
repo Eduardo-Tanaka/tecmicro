@@ -36,52 +36,37 @@
               <!--- Note that these columns can be defined in any order.
               The actual rendered columns are set as a property on the row definition" -->
 
-              <!-- Name Column -->
-              <ng-container matColumnDef="data">
-                <mat-header-cell *matHeaderCellDef mat-sort-header style="flex:1"> Data/Hora </mat-header-cell>
-                <mat-cell *matCellDef="let element" style="flex:1"> {{element.data}} </mat-cell>
-              </ng-container>
-
-              <!-- Weight Column -->
-              <ng-container matColumnDef="post">
-                <mat-header-cell *matHeaderCellDef mat-sort-header style="flex:1"> Post Nº </mat-header-cell>
-                <mat-cell *matCellDef="let element" style="flex:1"> {{element.post}} </mat-cell>
-              </ng-container>
-
-              <!-- Weight Column -->
-              <ng-container matColumnDef="autoria">
-                <mat-header-cell *matHeaderCellDef mat-sort-header style="flex:1"> Autoria </mat-header-cell>
-                <mat-cell *matCellDef="let element" style="flex:1"> 
-                  <img src="../assets/img/default-avatar.png" class="photo-post" /> <br/> {{element.autoria}} 
+              <ng-container matColumnDef="col1">
+                <mat-cell *matCellDef="let element" style="flex:1; min-height:75px;">
+                  <div class="d-flex justify-content-around">
+                    <div class="d-flex flex-column">
+                      <span class="text-center dash-info">0</span>
+                      <small>respostas</small>
+                    </div>                    
+                    <div class="d-flex flex-column">
+                      <span class="text-center dash-info">0</span>
+                      <small>visitas</small>
+                    </div>
+                  </div>
                 </mat-cell>
               </ng-container>
 
-              <!-- Symbol Column -->
-              <ng-container matColumnDef="tipo">
-                <mat-header-cell *matHeaderCellDef mat-sort-header style="flex:2"> Tipo </mat-header-cell>
-                <mat-cell *matCellDef="let element" style="flex:2"> {{element.tipo}} </mat-cell>
-              </ng-container>
-
-              <!-- Weight Column -->
-              <ng-container matColumnDef="assunto">
-                <mat-header-cell *matHeaderCellDef mat-sort-header style="flex:4"> Assunto </mat-header-cell>
-                <mat-cell *matCellDef="let element" style="flex:4"> 
-                  {{element.assunto}} 
-                  <hr style="margin: 0;" />
-                  <small>{{ element.descr | textsize:180 }}</small>
+              <ng-container matColumnDef="col2">
+                <mat-cell *matCellDef="let element" style="flex:2">
+                  <h6>{{ element.assunto }}</h6>
+                  <img src="../assets/img/default-avatar.png" class="photo-post" /> 
+                  <span style="margin-left:10px;">{{element.autoria}} perguntou: {{ element.data }}</span>
                 </mat-cell>
               </ng-container>
 
-              <!-- Symbol Column -->
-              <ng-container matColumnDef="resp">
-                <mat-header-cell *matHeaderCellDef mat-sort-header style="flex:1"> Resp. </mat-header-cell>
-                <mat-cell *matCellDef="let element" style="flex:1">
-                  <span class="fix-span-resposta"> {{element.resp}} </span>
+              <ng-container matColumnDef="col3">
+                <mat-cell *matCellDef="let element" style="flex:3">
+                  <p style="margin-bottom:0;font-size:12px;">{{ element.descr | textsize:150 }}</p>
+                  <p style="margin-top:10px;margin-bottom:0;font-size:12px;">Tipo: {{ element.tipo }}</p>
                 </mat-cell>
               </ng-container>
 
-              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns2;" (click)="clickRow(row)" style="padding:0;"></mat-row>
             </mat-table>
             
             <mat-paginator

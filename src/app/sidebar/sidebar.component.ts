@@ -29,15 +29,10 @@ export const ROUTES: RouteInfo[] = [
 		icontype: 'dashboard'
 	},
 	{
-		path: '/posts',
+		path: '/post/novo',
 		title: 'Posts',
-		type: 'sub',
-		icontype: 'question_answer',
-		collapse: 'posts',
-		children: [
-			{ path: 'novo', title: 'Novo Post', ab: 'NP' },
-			{ path: 'buscar', title: 'Buscar Posts', ab:'BP' }
-		]
+		type: 'link',
+		icontype: 'question_answer'
 	},
 	{
 		path: '/enquete',

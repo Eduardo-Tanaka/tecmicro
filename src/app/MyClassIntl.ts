@@ -1,7 +1,7 @@
 import { MatPaginatorIntl } from '@angular/material';
 
-const dutchRangeLabel = (page: number, pageSize: number, length: number) => {
-  if (length == 0 || pageSize == 0) { return `0 van ${length}`; }
+const portRangeLabel = (page: number, pageSize: number, length: number) => {
+  if (length == 0 || pageSize == 0) { return `0 de ${length}`; }
   
   length = Math.max(length, 0);
 
@@ -12,17 +12,18 @@ const dutchRangeLabel = (page: number, pageSize: number, length: number) => {
       Math.min(startIndex + pageSize, length) :
       startIndex + pageSize;
 
-  return `${startIndex + 1} - ${endIndex} van ${length}`;
+  return `${startIndex + 1} - ${endIndex} de ${length}`;
 }
 
-
-export function getDutchPaginatorIntl() {
+export function getPaginatorIntl() {
   const paginatorIntl = new MatPaginatorIntl();
   
-  paginatorIntl.itemsPerPageLabel = 'Items per pagina:';
-  paginatorIntl.nextPageLabel = 'Volgende pagina';
-  paginatorIntl.previousPageLabel = 'Vorige pagina';
-  paginatorIntl.getRangeLabel = dutchRangeLabel;
+  paginatorIntl.firstPageLabel = 'Primeira página';
+  paginatorIntl.lastPageLabel = 'Última página';
+  paginatorIntl.itemsPerPageLabel = 'Items por página:';
+  paginatorIntl.nextPageLabel = 'Próxima página';
+  paginatorIntl.previousPageLabel = 'Voltar página';
+  paginatorIntl.getRangeLabel = portRangeLabel;
   
   return paginatorIntl;
 }

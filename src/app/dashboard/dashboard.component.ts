@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
+import { Router } from '@angular/router';
 
 export interface Element {
   data: string;
@@ -12,13 +13,13 @@ export interface Element {
 }
 
 const ELEMENT_DATA: Element[] = [
-  { data: '10/7/2018 09:27:54', post: '23', autoria: 'Teste', tipo: 'Pergunta / Dúvida / Pedido de Ajuda', assunto: 'Update SQLServer com Javascript PHP', descr: 'Caros Integrantes da Lista, Estou construindo uma página em PHP, JavaScript e preciso fazer um update na tabela do SQLServer (SSMS), peguei alguns exemplos na internet para conseguir constr... ', resp: '8' },
-  { data: '10/7/2018 09:27:54', post: '22', autoria: 'Teste 2', tipo: 'Divulgação de Comunidade', assunto: 'Comunidade', descr: 'descrição', resp: '4' },
-  { data: '10/7/2018 09:27:54', post: '21', autoria: 'Teste', tipo: 'Compartilhamento de uma Solução ou Código Útil', assunto: 'Código', descr: 'descrição', resp: '18' },
-  { data: '10/7/2018 09:27:54', post: '20', autoria: 'Teste', tipo: 'Pergunta / Dúvida / Pedido de Ajuda', assunto: 'Dúvida', descr: 'descrição', resp: '8' },
-  { data: '10/7/2018 09:27:54', post: '19', autoria: 'Teste', tipo: 'Divulgação de Evento', assunto: 'Update SQLServer com Javascript PHP', descr: 'descrição', resp: '8' },
-  { data: '10/7/2018 09:27:54', post: '18', autoria: 'Teste', tipo: 'Divulgação de Evento', assunto: 'Update SQLServer com Javascript PHP', descr: 'descrição', resp: '8' },
-  { data: '10/7/2018 09:27:54', post: '17', autoria: 'Teste', tipo: 'Pergunta / Dúvida / Pedido de Ajuda', assunto: 'Update SQLServer com Javascript PHP', descr: 'descrição', resp: '8' }
+  { data: '10/7/2018', post: '23', autoria: 'Teste', tipo: 'Pergunta / Dúvida / Pedido de Ajuda', assunto: 'Update SQLServer com Javascript PHP', descr: 'Caros Integrantes da Lista, Estou construindo uma página em PHP, JavaScript e preciso fazer um update na tabela do SQLServer (SSMS), peguei alguns exemplos na internet para conseguir constr...', resp: '8' },
+  { data: '10/7/2018', post: '22', autoria: 'Teste 2', tipo: 'Divulgação de Comunidade', assunto: 'Comunidade', descr: 'descrição', resp: '4' },
+  { data: '10/7/2018', post: '21', autoria: 'Teste Teste', tipo: 'Compartilhamento de uma Solução ou Código Útil', assunto: 'Código', descr: 'descrição', resp: '18' },
+  { data: '10/7/2018', post: '20', autoria: 'Teste', tipo: 'Pergunta / Dúvida / Pedido de Ajuda', assunto: 'Dúvida', descr: 'descrição', resp: '8' },
+  { data: '10/7/2018', post: '19', autoria: 'Teste', tipo: 'Divulgação de Evento', assunto: 'Update SQLServer com Javascript PHP', descr: 'descrição', resp: '8' },
+  { data: '10/7/2018', post: '18', autoria: 'Teste', tipo: 'Divulgação de Evento', assunto: 'Update SQLServer com Javascript PHP', descr: 'descrição', resp: '8' },
+  { data: '10/7/2018', post: '17', autoria: 'Teste', tipo: 'Pergunta / Dúvida / Pedido de Ajuda', assunto: 'Update SQLServer com Javascript PHP', descr: 'descrição', resp: '8' }
 ];
 
 @Component({
@@ -28,6 +29,7 @@ const ELEMENT_DATA: Element[] = [
 })
 export class DashboardComponent implements OnInit, AfterViewInit {
   displayedColumns = ['data', 'post', 'autoria', 'tipo', 'assunto', 'resp'];
+  displayedColumns2 = ['col1', 'col2', 'col3'];
   filtroTipos = [
     'Pergunta / Dúvida / Pedido de Ajuda',
     'Compartilhamento de uma Solução ou Código Útil',
@@ -44,6 +46,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
+  constructor(private router:Router) {}
 
   // constructor(private navbarTitleService: NavbarTitleService) { }
   ngOnInit() {
@@ -68,5 +72,11 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   filtrarTipo(value: string) {
     this.dataSource.filter = value;
+  }
+
+  clickRow(row: Element) {
+    console.log(row)
+
+    this.router.navigate(['/post', row.post]);
   }
 }
