@@ -1,3 +1,60 @@
 <div class="main-content">
-<h1>Página Novo Post</h1>
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header card-header-success card-header-icon">
+        <div class="card-icon">
+          <i class="material-icons">question_answer</i>
+        </div>
+        <h4 class="card-title">Cadastro de Novo Post</h4>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="postForm" (ngSubmit)="savePost()">
+          <mat-form-field>
+            <mat-select placeholder="Escolha uma categoria" formControlName="categoria">
+              <mat-option *ngFor="let category of categories" [value]="category.value">
+                {{ category.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Assunto do Post" name="assunto" formControlName="assunto" />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-chip-list #chipList formControlName="tags">
+              <mat-chip *ngFor="let tag of tags" 
+                [selectable]="selectable"
+                [removable]="removable" 
+                (remove)="remove(tag)">
+                {{ tag }}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input placeholder="Adicione Tags ao Post"
+                [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                [matChipInputAddOnBlur]="addOnBlur"
+                (matChipInputTokenEnd)="add($event)" />
+            </mat-chip-list>
+          </mat-form-field>
+
+          <ckeditor
+            formControlName="content"
+            name="content"
+            (change)="changeContent($event)" 
+            #myckeditor 
+            [config]="ckeConfig" 
+            debounce="300" 
+            (ready)="onReady()">
+          </ckeditor>
+          
+          <div *ngIf="!postForm.get('content').valid && postForm.get('content').touched">
+            <p class="text-danger m-0" style="font-weight:400;">Escreva uma descrição para o seu post</p>
+          </div>
+
+          <button mat-raised-button color="primary" class="float-right mt-3" type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
