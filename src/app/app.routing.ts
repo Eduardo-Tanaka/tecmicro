@@ -24,6 +24,10 @@ export const AppRoutes: Routes = [
       {
         path: 'enquete',
         loadChildren: './enquete/enquete.module#EnqueteModule'
+      },
+      {
+        path: 'perfil',
+        loadChildren: './perfil/perfil.module#PerfilModule'
       }
     ]
   }

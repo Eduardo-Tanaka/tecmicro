@@ -1,31 +1,33 @@
 <div class="main-content">
-  <img src="../assets/img/default-avatar.png" style=" width: 60px; height: 60px; border-radius: 50%;" /> 
-  <span style="margin-left:10px;">nome pessoa (C111111) perguntou: 10/10/2018</span>
-  <h2>{{ title }}</h2>
-  <hr />
-  <pre>{{ descr }}</pre>
-  <div class="p-2 bg-secondary text-white">? RESPOSTAS</div>
+  <div class="container-fluid">
+    <img src="../assets/img/default-avatar.png" style=" width: 60px; height: 60px; border-radius: 50%;" /> 
+    <span style="margin-left:10px;">nome pessoa (C111111) perguntou: 10/10/2018</span>
+    <h2>{{ title }}</h2>
+    <hr />
+    <pre>{{ descr }}</pre>
+    <div class="p-2 bg-secondary text-white">? RESPOSTAS</div>
 
-  <div>
-    <ul class="timeline timeline-simple">
-      <li class="timeline-inverted" *ngFor="let resposta of respostas">
-        <div class="timeline-badge">
-          <img src="../assets/img/default-avatar.png" style="  width: 60px; height: 60px; border-radius: 50%;" /> 
-        </div>
-        <div class="timeline-panel">
-          <div class="timeline-heading">
-            <span>Nome Pessoa</span>
+    <div>
+      <ul class="timeline timeline-simple">
+        <li class="timeline-inverted" *ngFor="let resposta of respostas">
+          <div class="timeline-badge">
+            <img src="../assets/img/default-avatar.png" style="  width: 60px; height: 60px; border-radius: 50%;" /> 
           </div>
-          <div class="timeline-body">
-            <pre>
-              {{ resposta }}
-            </pre>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <span>Nome Pessoa</span>
+            </div>
+            <div class="timeline-body">
+              <pre>
+                {{ resposta }}
+              </pre>
+            </div>
+            <h6>
+              <i class="fa fa-calendar"></i> Data: 11/07/2018
+            </h6>
           </div>
-          <h6>
-            <i class="fa fa-calendar"></i> Data: 11/07/2018
-          </h6>
-        </div>
-      </li>            
-    </ul>
+        </li>            
+      </ul>
+    </div>
   </div>
 </div>

@@ -1,0 +1,86 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="offset-md-3 col-md-6">
+        <div class="card card-profile">
+          <div class="card-avatar">
+            <a href="https://permissoes.correio.corp.caixa.gov.br" target="_blank">
+              <img class="img" src="../assets/img/default-avatar.png">
+            </a>
+          </div>
+          <div class="card-body">
+            <h6 class="card-category text-gray">C{{ matricula }}</h6>
+            <h4 class="card-title">{{ nome }}</h4>
+
+            <div style="margin:20px 0;">
+              <h4 class="card-title">PPE: Pontos de Participação e Experiência</h4>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Postagens</th>
+                    <th>Curtidas Recebidas</th>
+                    <th>Curtidas Dadas</th>
+                    <th matTooltip="Convites, enquetes, etc">Especiais</th>
+                    <th>Acessos</th>
+                    <th>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>10</td>
+                    <td>20</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div style="margin:10px 0;">
+              <div class="togglebutton">
+                <label [ngClass]="email1 ? 'text-secondary' : 'text-white-50'">
+                  Quero receber e-mails: 
+                  <input [checked]="email1" type="checkbox" (change)="changeEmail1()">
+                  <span class="toggle"></span>
+                </label>
+              </div>
+              <div class="togglebutton">
+                <label [ngClass]="email2 ? 'text-secondary' : 'text-white-50'">
+                  Quero receber e-mails Off/topic: 
+                  <input [checked]="email2" type="checkbox" (change)="changeEmail2()">
+                  <span class="toggle"></span>
+                </label>
+              </div>
+            </div>
+            <button class="btn btn-danger btn-round w-25" data-toggle="modal" data-target="#myModal10">Sair da Lista</button>
+            <button class="btn btn-success btn-round w-25" (click)="salvarPerfil()">Salvar</button>
+
+            <!-- small modal -->
+            <div class="modal fade modal-mini modal-primary" id="myModal10" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-small">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5>Lista TecMicro</h5>
+                    <button mat-button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="material-icons">clear</i></button>
+                  </div>
+                  <div class="modal-body mt-0">
+                    <p>Você tem certeza que quer sair da lista?</p>
+                  </div>
+                  <div class="modal-footer justify-content-center">
+                    <button mat-raised-button type="button" class="btn btn-default" data-dismiss="modal">Não</button>
+                    <button mat-raised-button type="button" class="btn btn-danger" data-dismiss="modal" (click)="sairLista()">Sim
+                      <div class="ripple-container"></div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--    end small modal -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

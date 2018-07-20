@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../app.module';
 
 import { DashboardComponent } from './dashboard.component';
-import { TecmicroComponent } from './tecmicro/tecmicro.component';
+
 import { DashboardRoutes } from './dashboard.routing';
 
 import { TextSizePipe } from '../pipes/TextSizePipe.pipe'; 
@@ -17,7 +17,7 @@ import { TextSizePipe } from '../pipes/TextSizePipe.pipe';
     FormsModule,
     MaterialModule
   ],
-  declarations: [ DashboardComponent, TecmicroComponent, TextSizePipe ]
+  declarations: [ DashboardComponent, TextSizePipe ]
 })
 
 export class DashboardModule {}

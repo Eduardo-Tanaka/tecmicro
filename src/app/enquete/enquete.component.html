@@ -1,3 +1,27 @@
 <div class="main-content">
-<h1>Página ENQUETE</h1>
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header card-header-success card-header-icon">
+        <div class="card-icon">
+          <i class="material-icons">assignment</i>
+        </div>
+        <h4 class="card-title">Enquetes Ativas: <span class="badge badge-success badge-enquete">{{ enquetesAtivas }}</span></h4>
+      </div>
+      <div class="card-body" *ngFor="let enquete of enquetes">
+        <app-enquete-layout [enquete]="enquete"></app-enquete-layout>
+      </div>
+    </div> 
+
+    <div class="card">
+      <div class="card-header card-header-secondary card-header-icon">
+        <div class="card-icon">
+          <i class="material-icons">assignment</i>
+        </div>
+        <h4 class="card-title">Enquetes Finalizadas: <span class="badge badge-secondary badge-enquete">4{{ enquetesFinalizadas }}</span></h4>
+      </div>
+       <div class="card-body">
+        <app-enquete-layout [enquete]="enquetes[0]"></app-enquete-layout>
+      </div>
+    </div> 
+  </div>
 </div>

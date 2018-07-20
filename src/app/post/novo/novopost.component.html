@@ -39,6 +39,7 @@
           </mat-form-field>
 
           <ckeditor
+            [class.invisible]="hideEditor"
             formControlName="content"
             name="content"
             (change)="changeContent($event)" 

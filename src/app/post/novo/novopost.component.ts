@@ -24,6 +24,7 @@ export class NovoPostComponent implements OnInit {
 
   tags = [];
 
+  hideEditor = true;
   ckeConfig: any;
   content: string;
 
@@ -47,6 +48,7 @@ export class NovoPostComponent implements OnInit {
   ngOnInit() {
     this.ckeConfig = {
       allowedContent: false,
+      extraPlugins: 'divarea',
       removePlugins: 'link,save,selectall,showblocks,print,preview,newpage,pagebreak,language,liststyle,iframe,forms,flash,div,templates,bidi,dialogadvtab,colordialog,table,tableselection,tabletools,uploadimage,maximize,image,horizontalrule,specialchar,filebrowser,elementspath,format,wsc,scayt,sourcearea,about',
       forcePasteAsPlainText: true
     };
@@ -60,6 +62,7 @@ export class NovoPostComponent implements OnInit {
   }
 
   onReady(): void {
+    this.hideEditor = false;
     // remove os elementos abaixo para os inputs do editor ficarem na mesma linha
     $(".cke_toolbar_break").remove();
   }

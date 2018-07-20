@@ -23,14 +23,8 @@
       </a>
       <div class="collapse" id="collapseExample">
         <ul class="nav">
-          <li class="nav-item">
-            <a href="javascript:void(0)" class="nav-link">
-              <span class="sidebar-mini">MP</span>
-              <span class="sidebar-normal">Meu Perfil</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="javascript:void(0)" class="nav-link">
+          <li class="nav-item" routerLinkActive="active">
+            <a [routerLink]="'/perfil'" class="nav-link">
               <span class="sidebar-mini">EP</span>
               <span class="sidebar-normal">Editar Perfil</span>
             </a>

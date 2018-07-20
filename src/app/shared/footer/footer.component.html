@@ -1,7 +1,123 @@
 <footer class="footer">
-  <p style="width:100%;text-align:end;padding:0 15px;">
-    &copy;
-    {{ anoAtual | date: 'yyyy' }}, Prezado(a) Integrante: Respeitamos sua privacidade. Se você não quiser mais fazer parte desta Lista, basta clicar     
-    <span style="color:purple;cursor:pointer;" (click)="sairLista()">AQUI</span>.
-  </p>
+  <div class="container">
+    <nav class="pull-left">
+      <ul>
+        <li>
+          <button class="btn btn-link text-dark" data-toggle="modal" data-target="#infoModal">Quem Somos</button>
+        </li>
+        <li>
+          <button class="btn btn-link text-dark" data-toggle="modal" data-target="#creditosModal" 
+            matTooltip="Autores e Colaboradores deste site">Créditos</button>
+        </li>
+        <li>
+          <button class="btn btn-link text-dark" data-toggle="modal" data-target="#conviteModal">Convidar</button>
+        </li>
+        <li>
+          <button class="btn btn-link text-dark">Fazendo +</button>
+        </li>
+      </ul>
+    </nav>
+    <div class="copyright pull-right"> 
+      &copy;
+      {{ anoAtual | date: 'yyyy' }}, TecMicro Hub <i class="material-icons">favorite</i>
+    </div>
+  </div>
 </footer>
+
+<!-- creditos modal -->
+<div class="modal fade" id="creditosModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-notice">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">Portal TECMICRO-HUB</h5>
+        <button mat-button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          <i class="material-icons">close</i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="instruction">
+          <div class="row">
+            <div class="col-md-8">
+              <strong>Projeto e Versão Inicial:</strong>
+              <p class="description">Renato Oliveira (c058825)</p>
+            </div>
+            <div class="col-md-4">
+              <div class="picture">
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="instruction">
+          <div class="row">
+            <div class="col-md-8">
+              <strong>Colaboradores (Participe!): <i class="fa fa-heart"></i></strong>
+              <p class="description">Eduardo Shoiji Tanaka (c111761)</p>
+              <p class="description">(espaço para nome dos colaboradores)</p>
+            </div>
+          </div>
+        </div>
+
+        <p>Esta é uma ferramenta construída voluntariamente para a Intranet CAIXA.</p>
+        <p>Ela é fruto do compromisso/esforço de muitos em fazer sempre mais e melhor.</p>
+      </div>
+      <div class="modal-footer justify-content-end">
+        <button mat-raised-button type="button" class="btn btn-info btn-round w-35" data-dismiss="modal">OK, Obrigado!</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end notice modal -->
+
+<!-- small modal -->
+<div class="modal fade modal-mini modal-primary" id="conviteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-small">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title d-flex justify-content-center" id="myModalLabel">
+          <i class="material-icons">contact_mail</i><span class="pl-3">Envio do Convite</span>
+        </h5>
+        <button mat-button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          <i class="material-icons">clear</i>
+        </button>
+      </div>
+      <form [formGroup]="conviteForm" (ngSubmit)="convidar()">
+        <div class="modal-body">
+          <mat-form-field>
+            <input matInput placeholder="Matrícula" name="matricula" formControlName="matricula" maxlength="6" />
+            <mat-hint>Somente números! (6 dígitos)</mat-hint>
+          </mat-form-field>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button mat-raised-button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+          <button mat-raised-button type="submit" class="btn btn-success btn-link">Convidar
+            <div class="ripple-container"></div>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--    end small modal -->
+
+<!-- creditos modal -->
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-notice modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">Quem Somos</h5>
+        <button mat-button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          <i class="material-icons">close</i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-tecmicro-info></app-tecmicro-info>
+      </div>
+      <div class="modal-footer justify-content-end">
+        <button mat-raised-button type="button" class="btn btn-info btn-round w-35" data-dismiss="modal">OK, Obrigado!</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end notice modal -->

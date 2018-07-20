@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { MaterialModule } from '../app.module';
 
 import { EnqueteComponent } from './enquete.component';
+import { EnqueteLayoutComponent } from './layout/layout.component';
 import { EnqueteRoutes } from './enquete.routing';
 
 @NgModule({
@@ -14,7 +15,7 @@ import { EnqueteRoutes } from './enquete.routing';
     FormsModule,
     MaterialModule
   ],
-  declarations: [ EnqueteComponent ]
+  declarations: [ EnqueteComponent, EnqueteLayoutComponent ]
 })
 
 export class EnqueteModule {}

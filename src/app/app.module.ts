@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { APP_BASE_HREF } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -93,7 +93,7 @@ export class MaterialModule {}
 
 @NgModule({
   imports: [
-    CommonModule,
+    BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     RouterModule.forRoot(AppRoutes),

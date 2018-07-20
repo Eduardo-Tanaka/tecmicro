@@ -1,0 +1,38 @@
+<div class="card mt-0 mb-0">
+  <div class="card-body row">
+    <div class="col-md-2">
+      <h5 class="card-category text-center">Enquete {{ enquete.numero }}</h5>
+      <div>
+        <img src="./assets/img/image_placeholder.jpg" alt="enquete" width="100%">
+      </div>
+    </div>
+    <div class="col-md-5">
+      <p class="mt-5">{{ enquete.content }}</p>
+      <small>(Enquete sugerida por c{{ enquete.autor }})</small>
+      <br />
+      <small class="text-danger">Prazo Limite: {{ enquete.data }}</small>
+    </div>
+    <div class="col-md-5 checkbox-radios">
+      <form>
+        <label class="mt-2 mb-2">Alternativas</label>
+        <div class="form-check mt-1 mb-0" *ngFor="let option of enquete.options">
+          <label class="form-check-label" [class.text-primary]="option.id == selectedOption">
+            <input 
+              class="form-check-input" 
+              type="radio" name="exampleRadios" 
+              [value]="option.id" 
+              [checked]="option.id == enquete.selectedOption" 
+              [disabled]="(option.id != enquete.selectedOption && enquete.selectedOption != null) || 
+                (submitted && option.id != selectedOption)"
+              (click)="selectOption(option.id)"> {{ option.text }}
+            <span class="circle">
+              <span class="check"></span>
+            </span>
+          </label>
+        </div>
+        <button *ngIf="selectedOption == null || !submitted" class="mt-2" mat-raised-button color="primary" type="submit" (click)="submitEnquete()">Enviar</button>
+        <span *ngIf="selectedOption != null && submitted" class="position-absolute mt-2 text-primary">Você já respondeu essa enquete!</span>
+      </form>
+    </div>
+  </div>
+</div>
